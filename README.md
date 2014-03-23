@@ -16,6 +16,11 @@ SEMA
 
 ###To Run###
 
+**Setup**
+- number of cameras needed?
+- number of screens needed?
+- where are the source videos? I see the noise vid only...
+
 
 ***
 
