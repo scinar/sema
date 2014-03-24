@@ -130,7 +130,7 @@ void sema::draw(){
         string setupInfo2 = "** Hit '4' to init second cam device";
         string setupInfo3 = "** Hit 'F' for Fullscreen";
         string setupInfo4 = "** Hit 'D' to toggle Debuggz";
-        string setupInfo5 = "** Hit 'THEBOTTLE' hard";
+        string setupInfo5 = "** Hit ARROWS to change camera device";
         
         ofDrawBitmapString(setupInfo, 40, 15*numMess);
         ofDrawBitmapString(setupInfo2, 40, 30*numMess);
