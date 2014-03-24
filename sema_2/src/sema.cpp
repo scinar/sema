@@ -45,7 +45,7 @@ void sema::update(){
     
     video1.update();
     noise.update();
-    vidGrabber1.update();
+    if(cameraOn) vidGrabber1.update();
     
 	haarFinder1.setScaleHaar(scaleHaar);
     
@@ -108,12 +108,12 @@ void sema::draw(){
             float cx = haarFinder1.blobs[i].centroid.x;
             float cy = haarFinder1.blobs[i].centroid.y;
             
-            ofSetColor(0x00FF00);
+            ofSetColor(0,255,0);
             ofSetLineWidth(4);
             ofNoFill();
             ofEllipse(x+w/2, y+h/2, w, 4*h/3);
             
-            ofSetColor(0xFFFFFF);
+            ofSetColor(255);
             ofDrawBitmapString(ofToString(i), cx, cy);
             
         }
