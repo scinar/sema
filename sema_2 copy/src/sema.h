@@ -26,6 +26,12 @@ class sema : public ofBaseApp{
     ofxCvColorImage			colorImage1;
     ofxCvGrayscaleImage 	grayImage1;
     
+    ofxCvContourFinder contourFinder;
+    vector<ofPolyline> polylines, smoothed, resampled;
+    vector<ofRectangle> boundingBoxes;
+    vector<ofPoint> closestPoints;
+    vector<unsigned int> closestIndices;
+    
     ofxCvHaarFinder			haarFinder1;
     
     ofImage finalFace;

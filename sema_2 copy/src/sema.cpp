@@ -37,7 +37,7 @@ void sema::setup(){
     
     video1.loadMovie("videos/video1.mov");
     video1.play();
-    noise.loadMovie("videos/noise.mov");
+    noise.loadMovie("videos/video1.mov");
     noise.play();
 }
 
@@ -60,11 +60,12 @@ void sema::update(){
         }
     }
     if(iSeeYou){ //face has been detected
-        video1.setPaused(true);
-        noise.setPaused(false);
+       // grayImage1.draw(360,20);
+       // video1.setPaused(true);
+       // noise.setPaused(false);
     }else{
-        video1.setPaused(false);
-        noise.setPaused(true);
+       // video1.setPaused(false);
+       // noise.setPaused(true);
     }
 }
 
@@ -94,7 +95,8 @@ void sema::draw(){
         
         // draw the incoming & the grayscale
         ofSetColor(255);
-        colorImage1.draw(20,80);	
+        //ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+        colorImage1.draw(20,80);
         //grayImage1.draw(360,20);
         
         // drawing the matches
@@ -110,6 +112,7 @@ void sema::draw(){
             float cy = haarFinder1.blobs[i].centroid.y;
             
             ofSetColor(0,255,0);
+          //  ofEnableBlendMode(OF_BLENDMODE_ADD);
             ofSetLineWidth(4);
             ofNoFill();
             ofEllipse(x+w/2, y+h/2, w, 4*h/3);
@@ -126,16 +129,30 @@ void sema::draw(){
 
             //vidGrabber1.getPixelsRef().crop(x,y,w,h);
             //vidGrabber1.getPixelsRef().cropTo(<#ofPixels_<unsigned char> &toPix#>, <#int x#>, <#int y#>, <#int _width#>, <#int _height#>)
-            facePixels.setFromPixels(vidGrabber1.getPixels(),w,h,4);
             
+            //vidGrabber1.getPixels();
+            
+            //facePixels.getPixels();
+            
+            
+            facePixels.setFromPixels(vidGrabber1.getPixels(),w,h,3);
+            
+            //facePixels.setFromPixels(vidGrabber1.getPixels());
+            //contourFinder.findContours(facePixels, 5, (340*240)/4, 4, false, true);
             //facePixels.setFromPixels(vidGrabber1.getPixels(), w, h, 3);
             //facePixels.crop(x, y, w, h);
             //justFace.setFromPixels(facePixels);
 
             //finalFace.allocate(w, h);
-            finalFace.setFromPixels(facePixels);
             
-            finalFace.drawSubsection(400, 400, w, h, x, y);
+            //facePixels.getTextureData();
+            facePixels.getBytesPerPixel();
+            
+            finalFace.setFromPixels(facePixels);
+            colorImage1.draw(300, 200, 400, 400);
+            //colorImage1.drawSubsection(x, y,  w,  h,  cx,  cy);
+            //x+w/2, y+h/2, w, 4*h/3
+            //colorImage1.drawSubsection(400, 400, w, h, x, y);
 //            vidGrabber1.resetAnchor();
 
             
@@ -158,11 +175,12 @@ void sema::draw(){
         ofDrawBitmapString(setupInfo3, 40, 45*numMess);
         ofDrawBitmapString(reportStr, 40, 335*numMess);
         ofDrawBitmapString(haarReportStr, 40, 350*numMess);
+      /* */
     //cout<<"mouseX: "<< mouseX << "mouseY: << mouseY << endl;
     } //--- end if(Debug)
 
 
-//    finalFace.draw(400, 400);
+ //finalFace.draw(400, 400);
 }
 
 //--------------------------------------------------------------
