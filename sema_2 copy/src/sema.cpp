@@ -117,6 +117,28 @@ void sema::draw(){
             ofSetColor(255);
             ofDrawBitmapString(ofToString(i), cx, cy);
             
+            ofPixels facePixels;
+            //ofPixels justFace;
+            
+            //facePixels.allocate(vidGrabber1.width, vidGrabber1.height);
+            //justFace.allocate(w, h);
+            //char * pxls = vidGrabber1.getPixelsRef().crop(x, y, w, h);
+
+            //vidGrabber1.getPixelsRef().crop(x,y,w,h);
+            //vidGrabber1.getPixelsRef().cropTo(<#ofPixels_<unsigned char> &toPix#>, <#int x#>, <#int y#>, <#int _width#>, <#int _height#>)
+            facePixels.setFromPixels(vidGrabber1.getPixels(),w,h,4);
+            
+            //facePixels.setFromPixels(vidGrabber1.getPixels(), w, h, 3);
+            //facePixels.crop(x, y, w, h);
+            //justFace.setFromPixels(facePixels);
+
+            //finalFace.allocate(w, h);
+            finalFace.setFromPixels(facePixels);
+            
+            finalFace.drawSubsection(400, 400, w, h, x, y);
+//            vidGrabber1.resetAnchor();
+
+            
         }
         glPopMatrix();
         
@@ -136,9 +158,11 @@ void sema::draw(){
         ofDrawBitmapString(setupInfo3, 40, 45*numMess);
         ofDrawBitmapString(reportStr, 40, 335*numMess);
         ofDrawBitmapString(haarReportStr, 40, 350*numMess);
-    }
     //cout<<"mouseX: "<< mouseX << "mouseY: << mouseY << endl;
+    } //--- end if(Debug)
 
+
+//    finalFace.draw(400, 400);
 }
 
 //--------------------------------------------------------------
